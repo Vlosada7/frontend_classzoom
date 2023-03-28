@@ -1,5 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
+import solidPlugin from 'vite-plugin-solid';
+
+
 
 // https://vitejs.dev/config/
 // export default defineConfig({
@@ -68,11 +72,5 @@ export default defineConfig({
 		},
 	},
 });
-function solidPlugin(): import("vite").PluginOption {
-	throw new Error("Function not implemented.");
-}
 
-function chunkSplitPlugin(arg0: { strategy: string; }): import("vite").PluginOption {
-	throw new Error("Function not implemented.");
-}
 

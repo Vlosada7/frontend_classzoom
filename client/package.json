@@ -31,6 +31,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
+    "solid-js": "^1.6.16",
     "white-react-sdk": "^2.16.41",
     "white-web-sdk": "^2.16.41"
   },
@@ -47,7 +48,8 @@
     "eslint-plugin-react": "^7.32.2",
     "phaser": "^3.55.2",
     "typescript": "^5.0.2",
-    "vite": "^4.2.0",
-    "vite-plugin-chunk-split": "^0.4.7"
+    "vite": "^4.2.1",
+    "vite-plugin-chunk-split": "^0.4.7",
+    "vite-plugin-solid": "^2.6.1"
   }
 }
