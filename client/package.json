@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  // "main":"Phaser/game.tsx",
   "scripts": {
     "start":"tsc ./Phaser/game.tsx",
     "dev": "vite --host",
