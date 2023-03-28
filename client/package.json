@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start":"tsc ./Phaser/game.tsx",
+    "start":"vite preview",
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix"
