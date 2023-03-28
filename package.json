@@ -4,7 +4,6 @@
   "description": "hello",
   "main": "index.js",
   "scripts": {
-    "start":"npm run install-all-deps && cd client && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npm run lint:server && npm run lint:client",
     "lint:server": "cd server && npm run lint",
