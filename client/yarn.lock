@@ -478,24 +478,24 @@
   resolved "https://registry.npmjs.org/@juggle/resize-observer/-/resize-observer-3.4.0.tgz"
   integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
 
-"@mui/base@5.0.0-alpha.122":
-  version "5.0.0-alpha.122"
-  resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.122.tgz"
-  integrity sha512-IgZEFQyHa39J1+Q3tekVdhPuUm1fr3icddaNLmiAIeYTVXmR7KR5FhBAIL0P+4shlPq0liUPGlXryoTm0iCeFg==
+"@mui/base@5.0.0-alpha.123":
+  version "5.0.0-alpha.123"
+  resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.123.tgz"
+  integrity sha512-pxzcAfET3I6jvWqS4kijiLMn1OmdMw+mGmDa0SqmDZo3bXXdvLhpCCPqCkULG3UykhvFCOcU5HclOX3JCA+Zhg==
   dependencies:
     "@babel/runtime" "^7.21.0"
     "@emotion/is-prop-valid" "^1.2.0"
     "@mui/types" "^7.2.3"
     "@mui/utils" "^5.11.13"
-    "@popperjs/core" "^2.11.6"
+    "@popperjs/core" "^2.11.7"
     clsx "^1.2.1"
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/core-downloads-tracker@^5.11.14":
-  version "5.11.14"
-  resolved "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.14.tgz"
-  integrity sha512-rfc08z6+3Fif+Gopx2/qmk+MEQlwYeA+gOcSK048BHkTty/ol/boHuVeL2BNC/cf9OVRjJLYHtVb/DeW791LSQ==
+"@mui/core-downloads-tracker@^5.11.15":
+  version "5.11.15"
+  resolved "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.15.tgz"
+  integrity sha512-Q0e2oBsjHyIWWj1wLzl14btunvBYC0yl+px7zL9R69tF87uenj6q72ieS369BJ6jxYpJwvXfR6/f+TC+ZUsKKg==
 
 "@mui/icons-material@^5.11.11":
   version "5.11.11"
@@ -504,15 +504,15 @@
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-"@mui/material@^5.0.0":
-  version "5.11.14"
-  resolved "https://registry.npmjs.org/@mui/material/-/material-5.11.14.tgz"
-  integrity sha512-uoiUyybmo+M+nYARBygmbXgX6s/hH0NKD56LCAv9XvmdGVoXhEGjOvxI5/Bng6FS3NNybnA8V+rgZW1Z/9OJtA==
+"@mui/material@*", "@mui/material@^5.0.0":
+  version "5.11.15"
+  resolved "https://registry.npmjs.org/@mui/material/-/material-5.11.15.tgz"
+  integrity sha512-E5RbLq9/OvRKmGyeZawdnmFBCvhKkI/Zqgr0xFqW27TGwKLxObq/BreJc6Uu5Sbv8Fjj34vEAbRx6otfOyxn5w==
   dependencies:
     "@babel/runtime" "^7.21.0"
-    "@mui/base" "5.0.0-alpha.122"
-    "@mui/core-downloads-tracker" "^5.11.14"
-    "@mui/system" "^5.11.14"
+    "@mui/base" "5.0.0-alpha.123"
+    "@mui/core-downloads-tracker" "^5.11.15"
+    "@mui/system" "^5.11.15"
     "@mui/types" "^7.2.3"
     "@mui/utils" "^5.11.13"
     "@types/react-transition-group" "^4.4.5"
@@ -541,10 +541,10 @@
     csstype "^3.1.1"
     prop-types "^15.8.1"
 
-"@mui/system@^5.11.14":
-  version "5.11.14"
-  resolved "https://registry.npmjs.org/@mui/system/-/system-5.11.14.tgz"
-  integrity sha512-/MBv5dUoijJNEKEGi5tppIszGN0o2uejmeISi5vl0CLcaQsI1cd+uBgK+JYUP1VWvI/MtkWRLVSWtF2FWhu5Nw==
+"@mui/system@^5.11.15":
+  version "5.11.15"
+  resolved "https://registry.npmjs.org/@mui/system/-/system-5.11.15.tgz"
+  integrity sha512-vCatoWCTnAPquoNifHbqMCMnOElEbLosVUeW0FQDyjCq+8yMABD9E6iY0s14O7iq1wD+qqU7rFAuDIVvJ/AzzA==
   dependencies:
     "@babel/runtime" "^7.21.0"
     "@mui/private-theming" "^5.11.13"
@@ -682,10 +682,10 @@
     style-value-types "^3.1.7"
     tslib "^1.10.0"
 
-"@popperjs/core@^2.11.6", "@popperjs/core@^2.9.0":
-  version "2.11.6"
-  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"
-  integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
+"@popperjs/core@^2.11.7", "@popperjs/core@^2.9.0":
+  version "2.11.7"
+  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.7.tgz"
+  integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -755,7 +755,7 @@
   resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.4.0.tgz"
   integrity sha512-BJ9SxXux8zAg991UmT8slpwpsd31K1dHHbD3Ba4VzD+liLQ4WAMSxQp2d2ZPRPfN0jN2NPRowcSSoM7lCaF08Q==
 
-"@tinymce/tinymce-react@*":
+"@tinymce/tinymce-react@^4.3.0":
   version "4.3.0"
   resolved "https://registry.npmjs.org/@tinymce/tinymce-react/-/tinymce-react-4.3.0.tgz"
   integrity sha512-iB4cUsYfcJL4NGuKhqCGYuTmFTje3nPxyPv1HxprTsp/YMGuuiiSNWrv3zwI31QX5Cn8qeq9MrMDnbxuRugHyg==

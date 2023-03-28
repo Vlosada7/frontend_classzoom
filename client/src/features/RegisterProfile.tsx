@@ -9,7 +9,7 @@ import { RootState } from '../redux/store';
 
 import Field from '../Components/Field';
 // import Box from '@mui/material/Box';
-import Box from '@mui/material';
+import Box from '@mui/material/Box';
 import { Alert, Button, Grid, Slide, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import avatar from '../utils/avatar';
