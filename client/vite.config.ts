@@ -11,11 +11,12 @@ import solidPlugin from 'vite-plugin-solid';
 // 	resolve: {
 // 		preserveSymlinks: true,
 // 	},
-// 	// build: {
-// 	// 	rollupOptions: {
-// 	// 		external: "@mui/material/Box",
-// 	// 	},
-// 	// },
+// 	build: {
+// 		chunkSizeWarningLimit: 1600,
+// 		rollupOptions: {
+// 			external: "@mui/material/Box",
+// 		},
+// 	},
 // });
 
 // export default defineConfig({
