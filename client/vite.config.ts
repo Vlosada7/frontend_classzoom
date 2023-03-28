@@ -29,7 +29,13 @@ import react from "@vitejs/plugin-react";
 // });
 
 export default defineConfig({
-	plugins: [react()],
+	plugins: [
+		react(),
+		solidPlugin(),
+    chunkSplitPlugin({
+      strategy: 'default',
+    })
+	],
 	optimizeDeps: {
 		esbuildOptions: {
 			// Node.js global to browser globalThis
@@ -39,6 +45,13 @@ export default defineConfig({
 		},
 	},
 	build: {
+		minify:'terser',
+		target: 'esnext',
+		terserOptions: {
+			output: {
+				comments: false, // This will remove all comments from the output files
+			},
+		},
 		rollupOptions: {
 			output: {
 				manualChunks(id) {
@@ -50,7 +63,16 @@ export default defineConfig({
 							.toString();
 					}
 				},
+				
 			},
 		},
 	},
 });
+function solidPlugin(): import("vite").PluginOption {
+	throw new Error("Function not implemented.");
+}
+
+function chunkSplitPlugin(arg0: { strategy: string; }): import("vite").PluginOption {
+	throw new Error("Function not implemented.");
+}
+

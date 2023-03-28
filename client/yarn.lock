@@ -1437,6 +1437,11 @@ es-abstract@^1.19.0, es-abstract@^1.20.4:
     unbox-primitive "^1.0.2"
     which-typed-array "^1.1.9"
 
+es-module-lexer@^1.0.3:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-1.2.1.tgz"
+  integrity sha512-9978wrXM50Y4rTMmW5kXIC09ZdXQZqkE4mxhwkd8VbzsGkXGPgV4zWuqQJgCEzYngdo2dYDa0l8xhX4fkSwJSg==
+
 es-set-tostringtag@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/es-set-tostringtag/-/es-set-tostringtag-2.0.1.tgz"
@@ -2344,6 +2349,13 @@ m3u8-parser@^6.0.0:
     "@videojs/vhs-utils" "^3.0.5"
     global "^4.4.0"
 
+magic-string@^0.26.3:
+  version "0.26.7"
+  resolved "https://registry.npmjs.org/magic-string/-/magic-string-0.26.7.tgz"
+  integrity sha512-hX9XH3ziStPoPhJxLq1syWuZMxbDvGNbVchfrdCtanC7D13888bMFow61x8axrx+GfHLtVeAx2kxL7tTGRl+Ow==
+  dependencies:
+    sourcemap-codec "^1.4.8"
+
 magic-string@^0.27.0:
   version "0.27.0"
   resolved "https://registry.npmjs.org/magic-string/-/magic-string-0.27.0.tgz"
@@ -3015,6 +3027,11 @@ source-map@^0.5.7:
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz"
   integrity sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==
 
+sourcemap-codec@^1.4.8:
+  version "1.4.8"
+  resolved "https://registry.npmjs.org/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz"
+  integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
+
 spark-md5@^3.0.0:
   version "3.0.2"
   resolved "https://registry.npmjs.org/spark-md5/-/spark-md5-3.0.2.tgz"
@@ -3334,7 +3351,15 @@ videojs-vtt.js@0.15.4:
   dependencies:
     global "^4.3.1"
 
-vite@^4.1.0-beta.0, vite@^4.2.0:
+vite-plugin-chunk-split@^0.4.7:
+  version "0.4.7"
+  resolved "https://registry.npmjs.org/vite-plugin-chunk-split/-/vite-plugin-chunk-split-0.4.7.tgz"
+  integrity sha512-BGPMTxlC6Z+VNY1t/51F1ablkt4UQqdEPvAmCKRBsEPIpKAlW3sioQwK4klS14ievsGNaeALAKdko7n3oPJ8BQ==
+  dependencies:
+    es-module-lexer "^1.0.3"
+    magic-string "^0.26.3"
+
+vite@^3.1.0, vite@^4.1.0-beta.0, vite@^4.2.0:
   version "4.2.1"
   resolved "https://registry.npmjs.org/vite/-/vite-4.2.1.tgz"
   integrity sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==
