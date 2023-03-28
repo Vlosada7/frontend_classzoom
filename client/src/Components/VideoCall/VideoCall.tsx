@@ -9,6 +9,7 @@ import * as whiteboardService from '../../services/whiteboard.service';
 import * as reduxLesson from '../../redux/lesson';
 import { useDispatch } from 'react-redux';
 
+// import Fastboard from '../InteractiveWhiteboard/FastBoard';
 import Fastboard from '../InteractiveWhiteboard/FastBoard';
 
 const appId = '982666deb2ab44e7a3ab95555076b864';
