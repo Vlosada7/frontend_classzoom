@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 import { RootState } from '../redux/store';
 
 import Field from '../Components/Field';
-// import Box from '@mui/material/Box';
 import Box from '../../node_modules/@mui/material/Box';
 import { Alert, Button, Grid, Slide, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';

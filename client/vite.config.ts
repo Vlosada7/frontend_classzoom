@@ -7,9 +7,9 @@ export default defineConfig({
 	resolve: {
 		preserveSymlinks: true,
 	},
-	build: {
-		rollupOptions: {
-			external: "@mui/material/Box",
-		},
-	},
+	// build: {
+	// 	rollupOptions: {
+	// 		external: "@mui/material/Box",
+	// 	},
+	// },
 });
