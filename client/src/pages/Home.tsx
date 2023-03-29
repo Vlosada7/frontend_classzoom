@@ -4,9 +4,9 @@ import alex from '../assets/gifs/homepage/reading.gif';
 import mark from '../assets/gifs/homepage/mark_sitting_left.gif';
 import adam from '../assets/gifs/homepage/adam_phone.gif';
 import AuthLoginBtn from '../auth/AuthLoginBtn';
-import About from '../components/homepage/About';
-import Features from '../components/homepage/Features';
-import Pricing from '../components/homepage/Pricing';
+import About from '../Components/homepage/About';
+import Features from '../Components/homepage/Features';
+import Pricing from '../Components/homepage/Pricing';
 
 function Home() {
   const handleClickScroll = (text: string) => {

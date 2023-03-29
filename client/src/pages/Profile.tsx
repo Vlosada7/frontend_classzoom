@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
+import NavBar from '../Components/NavBar';
 import RegisterProfile from '../features/RegisterProfile';
 import AuthRequired from './AuthRequired';
 

@@ -16,7 +16,8 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { MenuBook, Description } from '@mui/icons-material';
-import BasicModal from '../components/BasicModal';
+// import BasicModal from '../Components/BasicModal';
+import BasicModal from '../Components/BasicModal';
 import Notes from '../features/Notes';
 import CreateLesson from '../features/CreateLesson';
 import './Lessons.css';

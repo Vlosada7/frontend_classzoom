@@ -9,5 +9,8 @@ export default defineConfig({
   }, 
   build: {
     chunkSizeWarningLimit: 10000,
+    rollupOptions: {
+      external: ["@mui/material"],
+    },
   },
 });
