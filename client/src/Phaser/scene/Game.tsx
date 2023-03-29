@@ -2,10 +2,23 @@ import Phaser from 'phaser';
 import { Client, Room } from 'colyseus.js';
 import { Player } from '../../../../server/colyseus/MySchoolSchema';
 import { store } from '../../redux/store';
-import { enterVideoCall } from '../../redux/user';
-import { CreateAnimation } from '../helperfunctions/CreateAnimation';
-import { CreateMap } from '../helperfunctions/CreateMap';
-import { ShowInstruction } from '../helperfunctions/ShowInstruction';
+import { enterVideoCall, openLibrary, closeLibrary } from '../../redux/user';
+import { createAnimation } from '../helperfunctions/CreateAnimation';
+import { createMap } from '../helperfunctions/CreateMap';
+import { loadingComplete } from '../../redux/loading';
+import {
+  showInstruction,
+  hideInstruction,
+} from '../helperfunctions/InstructionController';
+import {
+  movePlayerRight,
+  movePlayerDown,
+  movePlayerLeft,
+  movePlayerUp,
+  stopMoving,
+  setPlayerPosition,
+  makePlayerSit,
+} from '../helperfunctions/PlayerActionController';
 
 export default class Game extends Phaser.Scene {
   private currentPlayer!: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
@@ -16,16 +29,18 @@ export default class Game extends Phaser.Scene {
   private checkCollisions = false;
   private userName!: string;
   private spacebar!: Phaser.Input.Keyboard.Key;
+  private O!: Phaser.Input.Keyboard.Key;
+  private S!: Phaser.Input.Keyboard.Key;
   private sitting = false;
   private inCall = false;
+  private isReading = false;
   private chairPosition = [0, 0];
   private chairDirection!: string;
   private avatar!: string;
-  private localRef!: Phaser.GameObjects.Rectangle;
-  private remoteRef!: Phaser.GameObjects.Rectangle;
+  private role = 'Student';
 
   // private client = new Client(import.meta.env.VITE_PHASER);
-  private client = new Client('ws://192.168.0.241:4001');
+  private client = new Client('ws://192.168.0.185:4001');
   private room!: Room;
 
   private playerEntities: {
@@ -40,6 +55,7 @@ export default class Game extends Phaser.Scene {
     down: [false, 'movedown'],
     idle: [false, 'idle'],
     sit: [false, 'sit-right'],
+    reading: [false, 'reading'],
     inCall: this.inCall,
     collider: false,
     chairPosition: this.chairPosition,
@@ -51,13 +67,28 @@ export default class Game extends Phaser.Scene {
 
   preload() {
     this.cursorKeys = this.input.keyboard.createCursorKeys();
+    this.cameras.main.setZoom(0.75);
+    this.cameras.main.centerOn(3500, 3500);
+    const user = store.getState();
+    this.avatar = user.users.avatar;
+    const isStudent = user.users.student;
+    console.log(`student?: ${isStudent}`);
+    if (!isStudent) {
+      this.role = 'Teacher';
+    }
+    console.log(`assets/${this.role}/${this.avatar}/${this.avatar}.png`);
+    console.log(`assets/${this.role}/${this.avatar}/${this.avatar}.png`);
+    this.load.atlas(
+      `${this.avatar}`,
+      `assets/${this.role}/${this.avatar}/${this.avatar}.png`,
+      `assets/${this.role}/${this.avatar}/${this.avatar}.json`
+    );
   }
 
   async create() {
     const user = store.getState();
     if (user) {
-      this.userName = user.users.firstName;
-      this.avatar = user.users.avatar;
+      this.userName = user.users.username;
     }
 
     //create map
@@ -83,7 +114,7 @@ export default class Game extends Phaser.Scene {
       furnitureLayer,
       chairLayer,
       playgroundPropsLayer,
-    } = CreateMap(map);
+    } = createMap(map);
 
     //colyseus
     try {
@@ -97,25 +128,20 @@ export default class Game extends Phaser.Scene {
         console.log('sesion id', sessionId);
         if (sessionId === this.room.sessionId) {
           this.currentPlayer = entity;
-          // this.localRef = this.add.rectangle(0, 0, entity.width, entity.height);
-          // this.localRef.setStrokeStyle(1, 0x00ff00);
-
-          // to be removed: remoteRef is being used for debug only
-          // this.remoteRef = this.add.rectangle(
-          //   0,
-          //   0,
-          //   entity.width,
-          //   entity.height
-          // );
-          // this.remoteRef.setStrokeStyle(1, 0xff0000);
-          // // listening for server updates
-          // player.onChange(() => {
-          //   this.remoteRef.x = player.x;
-          //   this.remoteRef.y = player.y;
-          // });
+          this.cameras.main.setBounds(0, 0, 7200, 6200, true);
+          this.physics.world.setBounds(
+            0,
+            0,
+            7200,
+            6200,
+            true,
+            true,
+            true,
+            true
+          );
+          this.currentPlayer.body.collideWorldBounds = true;
           this.cameras.main.setZoom(0.75);
-
-          this.cameras.main.startFollow(this.currentPlayer);
+          this.cameras.main.startFollow(this.currentPlayer, true);
           this.playerName = this.add
             .text(
               this.currentPlayer.x + 12,
@@ -129,8 +155,8 @@ export default class Game extends Phaser.Scene {
             .setVisible(true)
             .setOrigin(0.5)
             .setFontSize(16);
+
           // add collision between layers
-          this.physics.add.collider(this.currentPlayer, libraryLayer);
           this.physics.add.collider(this.currentPlayer, genericLayer);
           this.physics.add.collider(this.currentPlayer, libraryPropsLayer);
           this.physics.add.collider(this.currentPlayer, genericOverlayLayer);
@@ -173,7 +199,8 @@ export default class Game extends Phaser.Scene {
             this.currentPlayer,
             libraryLayer,
             this.openLibrary,
-            undefined
+            undefined,
+            this
           );
         } else {
           player.onChange(() => {
@@ -184,7 +211,7 @@ export default class Game extends Phaser.Scene {
         }
 
         //animations
-        CreateAnimation(entity, this.avatar);
+        createAnimation(entity, this.avatar);
       });
 
       this.room.state.players.onRemove((player: Player, sessionId: string) => {
@@ -200,9 +227,14 @@ export default class Game extends Phaser.Scene {
     } catch (error) {
       console.log(error);
     }
+    // mapping keys from keyboard
     this.spacebar = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.SPACE
     );
+    this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+    this.S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+
+    store.dispatch(loadingComplete());
   }
 
   public checkCollision() {
@@ -220,7 +252,7 @@ export default class Game extends Phaser.Scene {
     this.chairPosition[1] = chair.pixelY + chair.height / 2;
     this.checkCollisions = true;
     if (this.collisionCounter === 0) {
-      ShowInstruction(this, 'Press space to join the class');
+      showInstruction(this, 'Press space to join the class');
       this.collisionCounter++;
     }
   }
@@ -230,8 +262,15 @@ export default class Game extends Phaser.Scene {
   ) {
     const player = p as Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
     const chair = c as unknown as Phaser.Tilemaps.Tile;
+    this.chairDirection = chair.properties.direction;
+    this.chairPosition[0] = chair.pixelX + chair.width / 2;
+    this.chairPosition[1] = chair.pixelY + chair.height / 2;
+    this.checkCollisions = true;
+    if (this.collisionCounter === 0) {
+      showInstruction(this, 'Press' + ' O ' + 'to view your lessons');
+      this.collisionCounter++;
+    }
   }
-
   update() {
     if (!this.room) {
       return;
@@ -243,9 +282,15 @@ export default class Game extends Phaser.Scene {
     const user = store.getState();
     if (user.users.inCall) {
       this.inCall = user.users.inCall;
-      console.log(this.inCall);
     } else {
       this.inCall = false;
+    }
+    if (user.users.isReading) {
+      this.isReading = user.users.isReading;
+      this.input.keyboard.manager.enabled = false;
+    } else {
+      this.input.keyboard.manager.enabled = true;
+      this.isReading = false;
     }
     this.inputPayload.left[0] = this.cursorKeys.left.isDown;
     this.inputPayload.right[0] = this.cursorKeys.right.isDown;
@@ -259,56 +304,58 @@ export default class Game extends Phaser.Scene {
 
     const velocity = 6;
     if (this.inputPayload.left[0]) {
-      this.currentPlayer.x -= velocity;
-      this.currentPlayer.setVelocityX(-velocity);
-      this.currentPlayer.anims.play('moveleft', true);
+      movePlayerLeft(this.currentPlayer, velocity);
     } else if (this.inputPayload.right[0]) {
-      this.currentPlayer.x += velocity;
-      this.currentPlayer.setVelocityX(velocity);
-      this.currentPlayer.anims.play('moveright', true);
+      movePlayerRight(this.currentPlayer, velocity);
     } else if (this.inputPayload.up[0]) {
-      this.currentPlayer.y -= velocity;
-      this.currentPlayer.setVelocityY(-velocity);
-      this.currentPlayer.anims.play('moveup', true);
+      movePlayerUp(this.currentPlayer, velocity);
     } else if (this.inputPayload.down[0]) {
-      this.currentPlayer.y += velocity;
-      this.currentPlayer.setVelocityY(velocity);
-      this.currentPlayer.anims.play('movedown', true);
+      movePlayerDown(this.currentPlayer, velocity);
     } else if (
       Phaser.Input.Keyboard.JustDown(this.spacebar) &&
       this.collisionCounter > 0
     ) {
       this.sitting = true;
       this.collisionCounter++;
-      console.log(this.collisionCounter);
       if (this.collisionCounter === 2) {
-        this.textBox.setVisible(false);
-        this.text.setVisible(false);
+        hideInstruction(this);
         store.dispatch(enterVideoCall());
-        this.currentPlayer.x = this.chairPosition[0];
-        this.currentPlayer.y = this.chairPosition[1];
-        this.currentPlayer.setPosition(
+        setPlayerPosition(
+          this.currentPlayer,
           this.chairPosition[0],
           this.chairPosition[1]
         );
-        if (this.chairDirection === 'right') {
-          this.currentPlayer.anims.play('sit-right', true);
-          this.inputPayload.sit[1] = 'sit-right';
-        } else {
-          this.currentPlayer.anims.play('sit-left', true);
-          this.inputPayload.sit[1] = 'sit-left';
-        }
-        this.inputPayload.sit[0] = true;
+        makePlayerSit(
+          this.currentPlayer,
+          this.inputPayload,
+          this.chairDirection
+        );
+        this.room.send('move', this.inputPayload);
+        this.collisionCounter = 0;
+      }
+    } else if (
+      Phaser.Input.Keyboard.JustDown(this.O) &&
+      this.collisionCounter > 0
+    ) {
+      this.collisionCounter++;
+      if (this.collisionCounter === 2) {
+        hideInstruction(this);
+        // dispatch to display the lessons
+        store.dispatch(openLibrary());
+        setPlayerPosition(
+          this.currentPlayer,
+          this.chairPosition[0],
+          this.chairPosition[1]
+        );
+        this.currentPlayer.anims.play('reading', true);
+        this.inputPayload.reading[0] = true;
         this.room.send('move', this.inputPayload);
         this.collisionCounter = 0;
       }
     } else {
-      this.currentPlayer.x += 0;
-      this.currentPlayer.setVelocityX(0);
-      this.currentPlayer.y += 0;
-      this.currentPlayer.setVelocityY(0);
+      stopMoving(this.currentPlayer);
 
-      if (!this.sitting || !this.inCall) {
+      if ((!this.sitting || !this.inCall) && !this.isReading) {
         this.currentPlayer.anims.play('idle', true);
         this.inputPayload.sit[0] = false;
         this.room.send('move', this.inputPayload);

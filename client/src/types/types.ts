@@ -1,5 +1,5 @@
 export type User = {
-  id?: string;
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -7,8 +7,9 @@ export type User = {
   avatar: string;
   student: boolean;
   newUser?: boolean;
-  schoolId?: string;
+  schoolId: string;
   inCall?: boolean;
+  isReading: boolean;
 };
 export type Library = {
   id: string;
@@ -51,4 +52,16 @@ export type Lesson = {
   notes?: NoteBook[];
   whiteboardToken?: string;
   whiteboardId?: string;
+};
+export type inputPayload = {
+  left: (string | boolean)[];
+  right: (string | boolean)[];
+  up: (string | boolean)[];
+  down: (string | boolean)[];
+  idle: (string | boolean)[];
+  sit: (string | boolean)[];
+  reading: (string | boolean)[];
+  inCall: boolean;
+  collider: boolean;
+  chairPosition: number[];
 };

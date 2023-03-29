@@ -15,8 +15,9 @@ const initialState: User = {
   username: '',
   student: true,
   newUser: true,
-  schoolId: '',
+  schoolId: 'a1b2',
   avatar: 'Jake',
+  isReading: false,
 };
 
 export const userSlice = createSlice({
@@ -35,10 +36,22 @@ export const userSlice = createSlice({
     endVideoCall: (state) => {
       state.inCall = false;
     },
+    openLibrary: (state) => {
+      state.isReading = true;
+    },
+    closeLibrary: (state) => {
+      state.isReading = false;
+    },
   },
 });
 
-export const { updateUser, enterVideoCall, endVideoCall } = userSlice.actions;
+export const {
+  updateUser,
+  enterVideoCall,
+  endVideoCall,
+  openLibrary,
+  closeLibrary,
+} = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectUser = (state: RootState) => state.users.name;

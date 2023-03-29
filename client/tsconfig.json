@@ -14,8 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "types":["@mui/material"]
+    "jsx": "react-jsx"
   },
   "include": ["src", "./eslintrc.json"],
   "references": [{ "path": "./tsconfig.node.json" }]
