@@ -18,6 +18,7 @@
     "@auth0/auth0-react": "^2.0.1",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.15",
+    "@mui/styled-engine": "^5.11.11",
     "@mui/x-date-pickers": "^6.0.3",
     "@netless/fastboard": "^0.3.7",
     "@netless/window-manager": "^0.4.55",
