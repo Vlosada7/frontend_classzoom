@@ -4,7 +4,7 @@ import * as pages from './pages';
 import routes from './utils/routes';
 import './App.css';
 
-import CustomAlert from './components/CustomAlert/CustomAlert';
+import CustomAlert from './Components/CustomAlert/CustomAlert';
 import { RootState } from './redux/store';
 import { useSelector } from 'react-redux';
 
