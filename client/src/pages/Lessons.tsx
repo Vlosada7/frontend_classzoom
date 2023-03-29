@@ -16,7 +16,6 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { MenuBook, Description } from '@mui/icons-material';
-// import BasicModal from '../Components/BasicModal';
 import BasicModal from '../Components/BasicModal';
 import Notes from '../features/Notes';
 import CreateLesson from '../features/CreateLesson';
@@ -73,38 +72,38 @@ const Lessons = () => {
   }, []);
 
   return (
-    // <AuthRequired>
+  // <AuthRequired>
     <>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar>
           <MenuBook />
           <Typography
-            variant='h6'
-            component='div'
+            variant="h6"
+            component="div"
             sx={{ flexGrow: 1, marginLeft: 2 }}
           >
-            Lessons
+						Lessons
           </Typography>
           {!user.student && (
             <Button
-              color='success'
-              variant='contained'
-              data-button-clicked='new-lesson'
+              color="success"
+              variant="contained"
+              data-button-clicked="new-lesson"
               onClick={(event) => handleModal(event, '')}
             >
-              Create New Lesson
+							Create New Lesson
             </Button>
           )}
         </Toolbar>
       </AppBar>
-      <Container maxWidth='sm'>
+      <Container maxWidth="sm">
         <Stack
           spacing={2}
           mt={5}
           mb={5}
-          justifyContent='center'
-          alignItems='center'
-          width='100%'
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
         >
           {loading ? (
             <CircularProgress />
@@ -112,14 +111,14 @@ const Lessons = () => {
             <>
               {allLessons ? (
                 allLessons.map((lesson: Lesson) => (
-                  <Paper key={lesson.id} className='lesson'>
+                  <Paper key={lesson.id} className="lesson">
                     <Typography>{lesson.name}</Typography>
-                    <Tooltip title='Open Notes'>
+                    <Tooltip title="Open Notes">
                       <>
                         {lessons.some((e: Lesson) => e.id === lesson.id) && (
                           <IconButton
                             onClick={(event) => handleModal(event, lesson.id)}
-                            data-button-clicked='note'
+                            data-button-clicked="note"
                           >
                             <Description />
                           </IconButton>
@@ -135,12 +134,12 @@ const Lessons = () => {
           )}
           <div>
             <Button
-              variant='contained'
-              color='error'
+              variant="contained"
+              color="error"
               sx={{ width: 100 }}
               onClick={() => dispatch(closeLibrary())}
             >
-              Close
+							Close
             </Button>
           </div>
         </Stack>
@@ -160,7 +159,7 @@ const Lessons = () => {
         </BasicModal>
       </Container>
     </>
-    // </AuthRequired>
+  // </AuthRequired>
   );
 };
 

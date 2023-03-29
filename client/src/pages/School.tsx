@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AuthRequired from './AuthRequired';
 import { useSelector } from 'react-redux';
 import VideoCall from '../Components/VideoCall/VideoCall';
-import BasicModal from '../components/BasicModal';
+import BasicModal from '../Components/BasicModal';
 import PhaserRoot from '../Phaser/Phaser';
 import { RootState } from '../redux/store';
 

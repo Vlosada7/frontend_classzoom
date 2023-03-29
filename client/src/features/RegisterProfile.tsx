@@ -8,7 +8,7 @@ import { showNewAlert } from '../redux/alert';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { RootState } from '../redux/store';
 
-import Field from '../components/Field';
+import Field from '../Components/Field';
 import Avatars from './Avatars/Avatars';
 import { Box, Button, Grid, Typography, AlertColor } from '@mui/material';
 import routes from '../utils/routes';
