@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { AlertColor } from '@mui/material';
+import { AlertColor } from '../../node_modules/@mui/material';
 
 type Alert = {
   message: string;

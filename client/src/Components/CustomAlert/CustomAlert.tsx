@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, AlertColor, Slide } from '@mui/material';
-
+import { Alert, AlertColor, Slide } from '../../../node_modules/@mui/material';
 
 import './CustomAlert.css';
 import { useDispatch } from 'react-redux';
@@ -38,13 +37,8 @@ function CustomAlert({
   }, []);
 
   return (
-    <div className="customAlert">
-      <Slide
-        direction="up"
-        in={show}
-        mountOnEnter
-        unmountOnExit
-      >
+    <div className='customAlert'>
+      <Slide direction='up' in={show} mountOnEnter unmountOnExit>
         <Alert severity={severity}>{message}</Alert>
       </Slide>
     </div>

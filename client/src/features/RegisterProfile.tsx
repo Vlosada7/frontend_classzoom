@@ -10,7 +10,13 @@ import { RootState } from '../redux/store';
 
 import Field from '../Components/Field';
 import Avatars from './Avatars/Avatars';
-import { Box, Button, Grid, Typography, AlertColor } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  Typography,
+  AlertColor,
+} from '../../node_modules/@mui/material';
 import routes from '../utils/routes';
 
 const RegisterProfile = () => {
@@ -129,89 +135,57 @@ const RegisterProfile = () => {
 
   return (
     <>
-      <div className="profile">
-        <div className="profile__content">
-          <Typography
-            variant="h4"
-            gutterBottom
-          >
+      <div className='profile'>
+        <div className='profile__content'>
+          <Typography variant='h4' gutterBottom>
             My Profile
           </Typography>
 
           {content && (
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-            >
+            <Typography variant='subtitle1' gutterBottom>
               {content}
             </Typography>
           )}
         </div>
 
-        <div className="_form">
-          <Box
-            component="form"
-            autoComplete="off"
-            onSubmit={handleSubmit}
-          >
-            <Grid
-              container
-              spacing={3}
-            >
-              <Grid
-                item
-                xs={6}
-              >
+        <div className='_form'>
+          <Box component='form' autoComplete='off' onSubmit={handleSubmit}>
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
                 <Field
                   {...getCommonInputProps()}
-                  name="firstName"
-                  label="First name"
+                  name='firstName'
+                  label='First name'
                   value={currUser.firstName}
                 />
               </Grid>
-              <Grid
-                item
-                xs={6}
-              >
+              <Grid item xs={6}>
                 <Field
                   {...getCommonInputProps()}
-                  name="lastName"
-                  label="Last name"
+                  name='lastName'
+                  label='Last name'
                   value={currUser.lastName}
                 />
               </Grid>
-              <Grid
-                item
-                xs={6}
-              >
+              <Grid item xs={6}>
                 <Field
                   {...usernameProps}
                   value={currUser.username}
                   handleChange={handleChange}
                 />
               </Grid>
-              <Grid
-                item
-                xs={6}
-              >
+              <Grid item xs={6}>
                 <Field
                   {...getCommonInputProps()}
-                  name="email"
-                  label="Email"
+                  name='email'
+                  label='Email'
                   value={currUser.email}
                   isDisabled={true}
-                  helperText="Contact administrator to change"
+                  helperText='Contact administrator to change'
                 />
               </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <Typography
-                  variant="subtitle1"
-                  gutterBottom
-                  align="left"
-                >
+              <Grid item xs={12}>
+                <Typography variant='subtitle1' gutterBottom align='left'>
                   Choose avatar
                 </Typography>
                 <Avatars
@@ -219,15 +193,12 @@ const RegisterProfile = () => {
                   handleChange={handleChange}
                 />
               </Grid>
-              <Grid
-                item
-                xs={12}
-              >
+              <Grid item xs={12}>
                 <Button
-                  className="_form__field _form__field--submit"
-                  type="submit"
-                  variant="contained"
-                  size="large"
+                  className='_form__field _form__field--submit'
+                  type='submit'
+                  variant='contained'
+                  size='large'
                 >
                   Save
                 </Button>

@@ -3,8 +3,13 @@ import AuthLogin from '../auth/AuthLoginBtn';
 import AuthLogoutBtn from '../auth/AuthLogoutBtn';
 import RegisterProfile from '../features/RegisterProfile';
 import BasicModal from './BasicModal';
-import { Avatar, Menu, MenuItem, ListItemIcon } from '@mui/material';
-import { Home, School, MenuBook } from '@mui/icons-material';
+import {
+  Avatar,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+} from '../../node_modules/@mui/material';
+import { Home, School, MenuBook } from '../../node_modules/@mui/icons-material';
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';

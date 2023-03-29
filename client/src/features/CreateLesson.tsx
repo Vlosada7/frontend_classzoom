@@ -14,8 +14,8 @@ import {
   SelectChangeEvent,
   Tooltip,
   IconButton,
-} from '@mui/material';
-import { ArrowBack } from '@mui/icons-material';
+} from '../../node_modules/@mui/material';
+import { ArrowBack } from '../../node_modules/@mui/icons-material';
 import moment from 'moment';
 import { Lesson, Subject } from '../types/types';
 import * as userService from '../services/user.service';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import { TextField } from '../../node_modules/@mui/material';
 
 type Props = {
   name: string;
@@ -26,7 +26,7 @@ function Field({
     <TextField
       className={`_form__field _form__field--${name}`}
       label={label}
-      variant="outlined"
+      variant='outlined'
       name={name}
       value={value}
       onChange={handleChange}

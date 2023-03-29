@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { NoteBook } from '../types/types';
-import { Typography, IconButton, Tooltip } from '@mui/material';
+import {
+  Typography,
+  IconButton,
+  Tooltip,
+} from '../../node_modules/@mui/material';
 import * as userService from '../services/user.service';
-import { Edit, Close, Save } from '@mui/icons-material';
+import { Edit, Close, Save } from '../../node_modules/@mui/icons-material';
 import './Notes.css';
 
 type NoteProps = {

@@ -1,6 +1,5 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+import { Box, Modal } from '../../node_modules/@mui/material';
 
 const style = {
   position: 'absolute' as const,
@@ -27,11 +26,11 @@ type Props = {
 function BasicModal({ open, handleModal, padding = 0, children }: Props) {
   return (
     <Modal
-      className="basicModal"
+      className='basicModal'
       open={open}
       onClose={handleModal}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      aria-labelledby='modal-modal-title'
+      aria-describedby='modal-modal-description'
     >
       <Box sx={{ ...style, p: padding }}>{children}</Box>
     </Modal>
