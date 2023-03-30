@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import dotenv from 'dotenv';
+dotenv.config();
 import { Client, Room } from 'colyseus.js';
 import { Player } from '../../../../server/colyseus/MySchoolSchema';
 import { store } from '../../redux/store';
@@ -40,7 +42,7 @@ export default class Game extends Phaser.Scene {
   private role = 'Student';
 
   // private client = new Client(import.meta.env.VITE_PHASER);
-  private client = new Client('https://colyseus-classzoom.cyclic.app/');
+  private client = new Client(process.env.VITE_PHASER);
   private room!: Room;
 
   private playerEntities: {
