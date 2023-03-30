@@ -9,6 +9,6 @@ export default defineConfig({
     preserveSymlinks: true,
   },
   build: {
-    chunkSizeWarningLimit: 10000,
+    chunkSizeWarningLimit: 15000,
   },
 });
