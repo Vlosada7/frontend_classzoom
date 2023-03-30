@@ -40,7 +40,7 @@ export default class Game extends Phaser.Scene {
   private role = 'Student';
 
   // private client = new Client(import.meta.env.VITE_PHASER);
-  private client = new Client('ws://192.168.0.185:4001');
+  private client = new Client('wss://colyseus-classzoom.cyclic.app/');
   private room!: Room;
 
   private playerEntities: {
